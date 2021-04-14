@@ -1,3 +1,4 @@
+
 package com.company.carservices.controller.security;
 
 import org.springframework.context.annotation.Bean;
@@ -26,18 +27,18 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/*").permitAll()
                 .antMatchers(HttpMethod.POST, Configuration.SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-                .formLogin()
-                .loginPage("/login")
                 // this disables session creation on Spring Security
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
-        @Override
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
