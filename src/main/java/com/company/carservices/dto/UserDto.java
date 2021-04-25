@@ -5,6 +5,7 @@ public class UserDto {
     private String email;
     private String password;
     private String userName;
+    private String roles;
 
     public String getEmail() {
         return email;
@@ -36,5 +37,13 @@ public class UserDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 }

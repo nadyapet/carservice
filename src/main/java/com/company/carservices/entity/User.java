@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @NoArgsConstructor
 @Entity
@@ -16,8 +19,7 @@ public class User extends BaseEntity {
     private String password;
     @Column(nullable = false)
     private String userName;
-
-    private int userType;
+    private String roles = "";
 
     public String getEmail() {
         return email;
@@ -43,11 +45,18 @@ public class User extends BaseEntity {
         this.userName = userName;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public List<String> getRoleList(){
+        if(this.roles != null && this.roles.length() > 0){
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
     }
 }
