@@ -1,7 +1,6 @@
 package com.company.carservices.controller;
 
 
-import com.company.carservices.controller.security.UserContext;
 import com.company.carservices.dto.CarDto;
 import com.company.carservices.dto.CarServiceHistoryDto;
 import com.company.carservices.dto.CodeDto;
@@ -18,18 +17,17 @@ public class CarController {
     private CarService carService;
     @Autowired
     private CarServiceHistoryService carServiceHistoryService;
-    private UserContext userContext;
 
     @GetMapping(value="/cars")
     public Iterable<CarDto> getCars() {
-        return carService.getCars(userContext.getUserId());
+        return carService.getCars(1);
     }
 
     @PostMapping(value="/cars")
     public CarDto addCar(@RequestBody CarDto car)
     {
         CodeDto userCodeDto = new CodeDto();
-        userCodeDto.setId(userContext.getUserId());
+        userCodeDto.setId(1);
         car.setUser(userCodeDto);
         return carService.save(car);
     }

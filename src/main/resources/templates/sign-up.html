@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head th:replace="fragments/head :: head">
+</head>
+<body>
+    <form th:action="@{/users/sign-up}" th:object="${user}" method="post">
+        <fieldset>
+            <div>
+                <div>
+                <label for="username">Username</label>
+                <input type="text" class="form-control" th:field="${user.username}" id="username" name="username"
+                       placeholder="Username">
+                </div>
+                <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="${user.password}" name="password"
+                       placeholder="Password">
+                </div>
+                <label for="email">Password</label>
+                <input type="email" id="email" th:field="${user.email}" name="email"
+                       placeholder="Enter email">
+            </div>
+            </div>
+            <button type="submit" class="btn btn-success">Sign up</button>
+        </fieldset>
+    </form>
+</body>
+</html>
