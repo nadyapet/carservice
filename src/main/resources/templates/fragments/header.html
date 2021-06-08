@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <body>
+        <header th:fragment="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1>Car services</h1>
+                </div>
+                <nav th:replace="navigation :: navigation" />
+            </div>
+        </header>
+    </body>
+</html>

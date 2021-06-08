@@ -17,7 +17,7 @@ public class UserController {
     public String signUpForm(Model model)
     {
         model.addAttribute("user", new UserDto());
-        return "/users/sign-up";
+        return "/sign-up";
     }
 
     @PostMapping("/sign-up")

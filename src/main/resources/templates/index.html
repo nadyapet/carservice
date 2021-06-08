@@ -4,6 +4,7 @@
 <head th:replace="fragments/head :: head">
 </head>
 <body>
+    <header th:replace="fragments/header :: header" />
     <div class="col-3" sec:authorize="isAuthenticated()">
         Hello,
         <span sec:authentication="name"></span>
@@ -12,5 +13,6 @@
     <div class="col-3" sec:authorize="isAnonymous()">
         <h1>Welcome!</h1>
     </div>
+    <footer></footer>
 </body>
 </html>

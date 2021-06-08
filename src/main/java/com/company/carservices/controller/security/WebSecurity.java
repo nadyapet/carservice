@@ -29,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/cars/**").hasAnyRole("OWNER", "EMPLOYEE")
                 .antMatchers("/services/**").hasAnyRole("OWNER", "EMPLOYEE")
                 .and()
-                .formLogin().successForwardUrl("/index")
+                .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
